@@ -32,8 +32,8 @@ export const exportToPdf = async (items: InvoiceItem[], settings: Settings) => {
   let font;
   try {
     const basePath = typeof window !== 'undefined' &&
-      (window.location.pathname.startsWith('/check/') || window.location.pathname === '/check')
-      ? '/check'
+      (window.location.pathname.startsWith('/check-electro/') || window.location.pathname === '/check-electro')
+      ? '/check-electro'
       : '';
 
     if (!cachedFont) {

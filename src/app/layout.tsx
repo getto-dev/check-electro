@@ -31,7 +31,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f59e0b" },
+    { media: "(prefers-color-scheme: light)", color: "#8b5cf6" },
     { media: "(prefers-color-scheme: dark)", color: "#1e1b4b" },
   ],
 };
@@ -49,7 +49,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="ЭлектроСчет" />
-        <meta name="msapplication-TileColor" content="#f59e0b" />
+        <meta name="msapplication-TileColor" content="#8b5cf6" />
         <meta name="msapplication-tap-highlight" content="no" />
 
         {/* Favicon */}
