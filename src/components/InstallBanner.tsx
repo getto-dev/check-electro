@@ -20,8 +20,8 @@ export function InstallBanner() {
     const dismissed = localStorage.getItem(DISMISSED_KEY);
     if (dismissed) {
       const dismissedTime = parseInt(dismissed, 10);
-      // Показывать снова через 7 дней после отклонения
-      if (Date.now() - dismissedTime < 7 * 24 * 60 * 60 * 1000) {
+      // Показывать снова через 12 часов после отклонения
+      if (Date.now() - dismissedTime < 12 * 60 * 60 * 1000) {
         return;
       }
     }
@@ -119,7 +119,7 @@ export function IOSInstallBanner() {
     const dismissed = localStorage.getItem(DISMISSED_KEY + '-ios');
     if (dismissed) {
       const dismissedTime = parseInt(dismissed, 10);
-      if (Date.now() - dismissedTime < 7 * 24 * 60 * 60 * 1000) {
+      if (Date.now() - dismissedTime < 12 * 60 * 60 * 1000) {
         return;
       }
     }
