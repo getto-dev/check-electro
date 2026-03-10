@@ -9,6 +9,7 @@ import { InvoiceSection } from '@/components/InvoiceSection';
 import { ManualSection } from '@/components/ManualSection';
 import { SettingsSection } from '@/components/SettingsSection';
 import { AddItemModal } from '@/components/AddItemModal';
+import { InstallBanner, IOSInstallBanner } from '@/components/InstallBanner';
 
 const CONTENT_WIDTHS = {
   catalog: 'max-w-5xl',
@@ -80,6 +81,8 @@ export default function HomePage() {
         {renderContent()}
       </main>
       <AddItemModal />
+      <InstallBanner />
+      <IOSInstallBanner />
     </div>
   );
 }
