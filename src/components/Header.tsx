@@ -1,8 +1,9 @@
 'use client';
 
 import { memo } from 'react';
+import Link from 'next/link';
 import { useAppStore, formatCurrency } from '@/lib/store';
-import { FileText, Settings, ChevronLeft } from 'lucide-react';
+import { FileText, Settings, ChevronLeft, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const Header = memo(function Header() {
@@ -37,6 +38,14 @@ export const Header = memo(function Header() {
         </button>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
+          <Link
+            href="/price"
+            className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-xl bg-muted hover:bg-primary hover:text-primary-foreground active:scale-95 transition-all touch-manipulation"
+            aria-label="Прайс-лист"
+          >
+            <BookOpen className="w-5 h-5 sm:w-5.5 sm:h-5.5" />
+          </Link>
+
           <button
             onClick={() => setTab('settings')}
             className={cn(

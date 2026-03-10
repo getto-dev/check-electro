@@ -9,108 +9,37 @@ export interface Service {
 export interface Category {
   id: string;
   name: string;
+  icon?: string;
 }
 
 export const VERSION = '2026.1';
 export const UPDATED = '2026';
 
 export const CATEGORIES: Category[] = [
-  {
-    "id": "cable_floor",
-    "name": "Кабель по полу/стенам"
-  },
-  {
-    "id": "cable_ceiling",
-    "name": "Кабель по потолку"
-  },
-  {
-    "id": "wire",
-    "name": "Монтаж провода"
-  },
-  {
-    "id": "sip",
-    "name": "СИП монтаж"
-  },
-  {
-    "id": "retro",
-    "name": "Ретро проводка"
-  },
-  {
-    "id": "low_voltage",
-    "name": "Слаботочные сети"
-  },
-  {
-    "id": "cable_channel",
-    "name": "Кабель-канал"
-  },
-  {
-    "id": "pipe",
-    "name": "Трубы"
-  },
-  {
-    "id": "grooving",
-    "name": "Штробление"
-  },
-  {
-    "id": "trays",
-    "name": "Лотки"
-  },
-  {
-    "id": "sleeves",
-    "name": "Гильзы"
-  },
-  {
-    "id": "grounding",
-    "name": "Заземление"
-  },
-  {
-    "id": "earth_works",
-    "name": "Земляные работы"
-  },
-  {
-    "id": "holes",
-    "name": "Отверстия"
-  },
-  {
-    "id": "socket_holes",
-    "name": "Подрозетники"
-  },
-  {
-    "id": "junction_boxes",
-    "name": "Распаячные коробки"
-  },
-  {
-    "id": "junction_wiring",
-    "name": "Расключение"
-  },
-  {
-    "id": "sockets_switches",
-    "name": "Розетки/Выключатели"
-  },
-  {
-    "id": "heating_systems",
-    "name": "Отопление/Аквасторож"
-  },
-  {
-    "id": "lighting",
-    "name": "Освещение"
-  },
-  {
-    "id": "appliances",
-    "name": "Бытовая техника"
-  },
-  {
-    "id": "boxes",
-    "name": "Боксы/Щиты"
-  },
-  {
-    "id": "switchgear",
-    "name": "Силовое оборудование"
-  },
-  {
-    "id": "avr",
-    "name": "АВР"
-  }
+  { id: 'cable_floor', name: 'Кабель по полу/стенам', icon: '🔌' },
+  { id: 'cable_ceiling', name: 'Кабель по потолку', icon: '💡' },
+  { id: 'wire', name: 'Монтаж провода', icon: '⚡' },
+  { id: 'sip', name: 'СИП монтаж', icon: '🏗️' },
+  { id: 'retro', name: 'Ретро проводка', icon: '🏚️' },
+  { id: 'low_voltage', name: 'Слаботочные сети', icon: '📡' },
+  { id: 'cable_channel', name: 'Кабель-канал', icon: '📐' },
+  { id: 'pipe', name: 'Трубы', icon: '🔧' },
+  { id: 'grooving', name: 'Штробление', icon: '🔨' },
+  { id: 'trays', name: 'Лотки', icon: '📦' },
+  { id: 'sleeves', name: 'Гильзы', icon: '⭕' },
+  { id: 'grounding', name: 'Заземление', icon: '🌍' },
+  { id: 'earth_works', name: 'Земляные работы', icon: '🚜' },
+  { id: 'holes', name: 'Отверстия', icon: '🕳️' },
+  { id: 'socket_holes', name: 'Подрозетники', icon: '🔲' },
+  { id: 'junction_boxes', name: 'Распаячные коробки', icon: '📦' },
+  { id: 'junction_wiring', name: 'Расключение', icon: '🔗' },
+  { id: 'sockets_switches', name: 'Розетки/Выключатели', icon: '🎚️' },
+  { id: 'heating_systems', name: 'Отопление/Аквасторож', icon: '🌡️' },
+  { id: 'lighting', name: 'Освещение', icon: '💡' },
+  { id: 'appliances', name: 'Бытовая техника', icon: '🔌' },
+  { id: 'boxes', name: 'Боксы/Щиты', icon: '🗄️' },
+  { id: 'switchgear', name: 'Силовое оборудование', icon: '⚙️' },
+  { id: 'avr', name: 'АВР', icon: '🔄' },
 ];
 
 export const CATALOG: Record<string, Service[]> = {
@@ -2032,3 +1961,22 @@ export const CATALOG: Record<string, Service[]> = {
       }
   ],
 };
+
+// Utility functions
+export function formatCurrency(price: number | string): string {
+  if (typeof price === 'string') return price;
+  return price.toLocaleString('ru-RU') + ' ₽';
+}
+
+export function declOfNum(number: number, titles: [string, string, string]): string {
+  const cases = [2, 0, 1, 1, 1, 2];
+  return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+}
+
+export function getCategoryName(id: string): string {
+  return CATEGORIES.find((c) => c.id === id)?.name || '';
+}
+
+export function getCategoryIcon(id: string): string {
+  return CATEGORIES.find((c) => c.id === id)?.icon || '';
+}
